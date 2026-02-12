@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Before I Ask You Something Important 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+<div id="startOverlay" style="position: fixed; inset: 0; background: linear-gradient(135deg, #ffafbd, #ffc3a0); z-index: 10000; display: flex; justify-content: center; align-items: center; text-align: center;">
+    <div style="background: white; padding: 50px; border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); max-width: 90%;">
+        <h1>Hi Sonam... 💖</h1>
+        <p>I have prepared something special for you.</p>
+        <button class="cute-btn" onclick="initExperience()">Open My Heart 💌</button>
+    </div>
+</div>
+
+<div class="floating-elements"></div>
+
+<div class="container">
+    <div id="introSection">
+        <div class="profile-image-container">
+            <img src="Passport pic.jpeg" class="profile-image" alt="Profile">
+        </div>
+        <h1>Before I Ask You Something Important… 💖</h1>
+        <p class="intro-text">
+            I want you to know who I truly am — not just my name,
+            but my intentions, values, and the future I see.
+        </p>
+        <h2>Mohan Kumar</h2>
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <p id="progressText">Understanding Level: 0%</p>
+        
+        <div id="stepContainer">
+            <div class="step-item hidden-step">
+                <p><strong>My Lifelong Goal:</strong> To be your constant support and greatest cheerleader. 🥂</p>
+                <div class="reaction">
+                    <button onclick="handleReaction(this,true)">❤️</button>
+                    <button onclick="handleReaction(this,false)">💔</button>
+                </div>
+            </div>
+            <div class="step-item hidden-step">
+                <p><strong>My Promise:</strong> To choose you every single day, through the highs and the lows. 🤝</p>
+                <div class="reaction">
+                    <button onclick="handleReaction(this,true)">❤️</button>
+                    <button onclick="handleReaction(this,false)">💔</button>
+                </div>
+            </div>
+            <div class="step-item hidden-step">
+                <p><strong>Definition of Home:</strong> It’s not a place, it’s wherever you are. 🏠</p>
+                <div class="reaction">
+                    <button onclick="handleReaction(this,true)">❤️</button>
+                    <button onclick="handleReaction(this,false)">💔</button>
+                </div>
+            </div>
+            <div class="step-item hidden-step">
+                <p><strong>Our Future:</strong> Building a life of shared dreams and endless laughter. ✨</p>
+                <div class="reaction">
+                    <button onclick="handleReaction(this,true)">❤️</button>
+                    <button onclick="handleReaction(this,false)">💔</button>
+                </div>
+            </div>
+            <div class="step-item hidden-step">
+                <p><strong>My Commitment:</strong> Loyalty, deep respect, and a love that never stops growing. 💍</p>
+                <div class="reaction">
+                    <button onclick="handleReaction(this,true)">❤️</button>
+                    <button onclick="handleReaction(this,false)">💔</button>
+                </div>
+            </div>
+        </div>
+        
+        <p id="likeSummary" class="hidden"></p>
+        <button id="continueBtn" class="cute-btn" disabled onclick="startProcess()">Continue Our Journey 💘</button>
+    </div>
+
+    <div id="mainContent" class="hidden">
+        <div class="section" id="question1">
+            <h2>Do you see a future with me? 💕</h2>
+            <button class="cute-btn" onclick="yesReaction(2)">Yes 😍</button>
+            <button class="cute-btn" onclick="moveButton(this)">Not Sure 😅</button>
+        </div>
+
+        <div class="section hidden" id="question2">
+            <h2>How much do you believe in us? 💞</h2>
+            <input type="range" min="0" max="100" value="50" id="loveMeter" class="slider">
+            <p class="love-display">
+                <span id="loveValue">50</span>% <span id="loveEmoji">😊</span>
+            </p>
+            <button class="cute-btn" onclick="showNext(3)">Next 💋</button>
+        </div>
+
+        <div class="section hidden" id="question3">
+            <h2>Will you build this life with me? 💍</h2>
+            <button class="cute-btn" onclick="celebrate()">Yes, I Will 🥰</button>
+            <button class="cute-btn" onclick="moveButton(this)">No 😜</button>
+        </div>
+
+        <div class="section hidden" id="celebration">
+            <h2 class="celebration-text">You Just Made My Heart Happier 💖💖💖</h2>
+            <button class="cute-btn" onclick="goToMarriageForm()">Let’s Understand More About Us 💞</button>
+        </div>
+
+        <div class="section hidden" id="marriageFormSection">
+            <h2>Let’s Understand Each Other 💍</h2>
+            <form id="marriageForm">
+                <input type="text" id="herHobbies" placeholder="Your Hobbies 💃" required>
+                <input type="text" id="herFood" placeholder="Favorite Food 🍕" required>
+                <textarea id="herFamily" placeholder="Joint Family Opinion 👨‍👩‍👧‍👦" required></textarea>
+                <textarea id="herCareer" placeholder="Career After Marriage 💼" required></textarea>
+                <textarea id="herExpectations" placeholder="Your Expectations 💖" required></textarea>
+                <button type="submit" class="cute-btn">Save Answers 💕</button>
+            </form>
+            <button class="cute-btn" id="finishFormBtn" onclick="finalEnding()" style="margin-top: 20px;">Continue Our Story 💌</button>
+        </div>
+
+        <div class="section hidden" id="finalEnding">
+            <h2>Our First Trip Together ✈️</h2>
+            <div class="option-group">
+                <div class="option-card" onclick="selectOption(this, 'trip')">🏖️ Beach <span class="selected-icon">💖</span></div>
+                <div class="option-card" onclick="selectOption(this, 'trip')">🏔️ Mountains <span class="selected-icon">💖</span></div>
+                <div class="option-card" onclick="selectOption(this, 'trip')">🌍 International Trip <span class="selected-icon">💖</span></div>
+                <div class="option-card" onclick="selectOption(this, 'trip')">🏕️ Camping <span class="selected-icon">💖</span></div>
+            </div>
+            <h2>Our Future Home 🏡</h2>
+            <div class="option-group">
+                <div class="option-card" onclick="selectOption(this, 'home')">🌆 City Apartment <span class="selected-icon">💖</span></div>
+                <div class="option-card" onclick="selectOption(this, 'home')">🌳 Farmhouse <span class="selected-icon">💖</span></div>
+                <div class="option-card" onclick="selectOption(this, 'home')">🏡 Villa <span class="selected-icon">💖</span></div>
+                <div class="option-card" onclick="selectOption(this, 'home')">🏘️ Joint Family <span class="selected-icon">💖</span></div>
+            </div>
+            <h2>Forever With You 💍</h2>
+            <div class="option-group">
+                <div class="option-card" onclick="selectOption(this, 'partner')">👫 Best Friends <span class="selected-icon">💖</span></div>
+                <div class="option-card" onclick="selectOption(this, 'partner')">💞 Soulmates <span class="selected-icon">💖</span></div>
+                <div class="option-card" onclick="selectOption(this, 'partner')">🌍 Travel Partners <span class="selected-icon">💖</span></div>
+                <div class="option-card" onclick="selectOption(this, 'partner')">❤️ Life Partners <span class="selected-icon">💖</span></div>
+            </div>
+            <button class="cute-btn" onclick="goToMedia()">Save Our Dreams 💖</button>
+        </div>
+
+        <div class="section hidden" id="mediaSection">
+            <h2>Our Beautiful Memories 📸</h2>
+            <div class="memory-gallery">
+                <div class="polaroid" onclick="openMemory('photo1.jpeg', 'The moment I knew you were someone special. ✨')">
+                    <img src="photo1.jpeg" alt="Memory 1">
+                    <p>Where it all started ✨</p>
+                </div>
+                <div class="polaroid" onclick="openMemory('photo2.jpeg', 'Every laugh we share makes me realize how lucky I am. ❤️')">
+                    <img src="photo2.jpeg" alt="Memory 2">
+                    <p>Every moment is special ❤️</p>
+                </div>
+                <div class="polaroid" onclick="openMemory('photo3.jpeg', 'Looking forward to a lifetime of happiness with you. 💍')">
+                    <img src="photo3.jpeg" alt="Memory 3">
+                    <p>Happier with you 💍</p>
+                </div>
+            </div>
+            <h2 style="margin-top: 30px;">A Special Message For You (You look Beautiful in this videos)🎥</h2>
+            <div class="video-wrapper">
+                <video controls playsinline class="romantic-video">
+                    <source src="Video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <button class="cute-btn" onclick="goToValentine()" style="margin-top: 30px;">The Final Question... 🌹</button>
+        </div>
+    </div>
+
+    <div class="section hidden" id="valentineSection">
+        <h1 id="proposalName">Sonam... ❤️</h1>
+        <h2>Do you like me?</h2>
+        <button class="cute-btn" onclick="valentineYes()">Yes 💘</button>
+        <button class="cute-btn" id="valentineNoBtn" onclick="moveButton(this)">No 😅</button>
+        <div class="secret-answer" style="margin-top: 20px;">
+            <button class="cute-btn" onclick="valentineYes()">I don’t like you, I love you! 💖</button>
+        </div>
+    </div>
+</div>
+
+<div id="memoryModal" class="modal hidden" onclick="closeMemoryModal(event)">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeMemoryModal(null)">×</span>
+    <div class="modal-image-wrapper"><img id="modalImage" src="" alt="Memory Full"></div>
+    <p id="modalMessage"></p>
+    <button class="cute-btn" onclick="closeMemoryModal(null)">Close 💖</button>
+  </div>
+</div>
+
+<div id="pdf-template" style="display: none; padding: 40px; background: white; color: #ff4757; font-family: 'Poppins', sans-serif;">
+    <div style="border: 10px solid #ffafbd; padding: 30px; border-radius: 20px; text-align: center;">
+        <h1>Our Eternal Love Story 💖</h1>
+        <p>Sonam & Mohan</p>
+        <hr style="border: 1px solid #ffc3a0; margin: 20px 0;">
+        <div style="text-align: left; font-size: 16px; line-height: 1.8;">
+            <p>🌹 <strong>Understanding Level:</strong> <span id="pdf-score"></span></p>
+            <p>🌹 <strong>Belief in Us:</strong> <span id="pdf-belief"></span></p>
+            <p>🌹 <strong>Hobbies:</strong> <span id="pdf-hobbies"></span></p>
+            <p>🌹 <strong>Favorite Food:</strong> <span id="pdf-food"></span></p>
+            <p>🌹 <strong>Joint Family Opinion:</strong> <span id="pdf-family"></span></p>
+            <p>🌹 <strong>Career Path:</strong> <span id="pdf-career"></span></p>
+            <p>🌹 <strong>Expectations:</strong> <span id="pdf-expect"></span></p>
+            <p>🌹 <strong>First Trip Together:</strong> <span id="pdf-trip"></span></p>
+            <p>🌹 <strong>Future Home:</strong> <span id="pdf-home"></span></p>
+            <p>🌹 <strong>Forever We Are:</strong> <span id="pdf-partner"></span></p>
+        </div>
+        <h2 style="margin-top: 40px; color: #ff6b6b;">She Said YES! 💍✨❤️</h2>
+    </div>
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="Main Koi Aisa Geet Gaoon.mp3" type="audio/mpeg">
+</audio>
+
+<script src="script.js"></script>
+</body>
+</html>
