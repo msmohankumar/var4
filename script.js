@@ -101,7 +101,7 @@ function valentineYes() {
     const container = document.getElementById("valentineSection");
     container.innerHTML = `
         <h1 style="color: #ff4757;">Perfect Choice! 💖</h1>
-        <p>You've made me the happiest person, Sonam. 💍✨</p>
+        <p>You've made me the happiest person, Priyanka. 💍✨</p>
         <button id="downloadBtn" class="cute-btn" style="background: #2ecc71; margin-top: 20px;" onclick="downloadPDF()">Download Our Full Story (PDF) 📄💖</button>
     `;
 }
@@ -120,7 +120,7 @@ function downloadPDF() {
 
     const element = document.getElementById('pdf-template');
     element.style.display = 'block';
-    const opt = { margin: 10, filename: 'Our_Story_Sonam.pdf', html2canvas: { scale: 2 }, jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' } };
+    const opt = { margin: 10, filename: 'Our_Story_Priyanka.pdf', html2canvas: { scale: 2 }, jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' } };
     html2pdf().set(opt).from(element).save().then(() => element.style.display = 'none');
 }
 
